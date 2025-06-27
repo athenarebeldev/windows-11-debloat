@@ -2,7 +2,7 @@
 
 > "For those moments when you look at your own operating system and ask, 'But why, though?'"
 
-![https://github-production-user-asset-6210df.s3.amazonaws.com/91864168/459886383-4b597965-ad30-4795-bcf7-47f48699be00.png](https://github-production-user-asset-6210df.s3.amazonaws.com/91864168/459886383-4b597965-ad30-4795-bcf7-47f48699be00.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250627%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250627T102340Z&X-Amz-Expires=300&X-Amz-Signature=4b82851bcba95cddf943e42e491e8acd14d7eb65bd75a7189a4b04cce084d671&X-Amz-SignedHeaders=host)
+![This is a photo of the terminal I promise](Terminal.png)
 
 ---
 

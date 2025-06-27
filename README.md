@@ -90,7 +90,8 @@ This is the most crucial step. Don't just double-click it like a normal person.
 
 * **About the Developer:**
     * [Come meet me on my Discord!](https://discord.gg/JtQ2QTfjXt)
-    ![Snoopy](photos/snoopy_VERY_IMPORTANT.jpeg)
   
 
 Made with 💙 by: [AthenaRebel](https://atxyz.dev/)
+
+![Snoopy](photos/snoopy_VERY_IMPORTANT.jpeg)

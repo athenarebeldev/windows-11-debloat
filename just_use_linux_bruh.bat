@@ -8,7 +8,7 @@ color 0F
 
 
 set "SCRIPT_NAME=just_use_linux_bruh"
-set "VERSION=7.0"
+set "VERSION=1.1"
 
 set "REG_KEY_WIN_COpilot=HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"
 set "REG_KEY_EDGE_COpilot=HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge"

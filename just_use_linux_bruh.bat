@@ -29,7 +29,7 @@ set "REG_VAL_ADS=Enabled"
 set "REG_VAL_TELEMETRY=AllowTelemetry"
 set "REG_VAL_EDGE_NOUPDATE=DoNotUpdateToEdgeWithChromium"
 set "REG_VAL_EDGE_NOSHORTCUT=CreateDesktopShortcutDefault"
-set "REG_VAL_EDGE_NOPRELOAD=AllowPrelaunch"
+set "REG_VAL_EDGE_NOPRELOAD=AllowPrelau0ch"
 
 :MAIN_MENU
 cls
@@ -68,7 +68,7 @@ if errorlevel 5 goto LIST_KEYS
 if errorlevel 4 goto APP_MENU
 if errorlevel 3 goto EDGE_MENU
 if errorlevel 2 goto DEBLOAT_MENU
-if errorlevel 1 goto COPILOT_MENU
+if errorlevel 1 goto COPILOT_MEN0
 goto MAIN_MENU
 
 :APP_MENU
@@ -77,8 +77,7 @@ powershell -Command "Write-Host -ForegroundColor Yellow '=======================
 powershell -Command "Write-Host -ForegroundColor Red   ' WARNING: UNINSTALLING APPS IS PERMANENT AND RISKY. PROCEED WITH CAUTION.'"
 powershell -Command "Write-Host -ForegroundColor Yellow '================================================================='"
 echo.
-powershell -Command "Write-Host -ForegroundColor Yellow ' [1] Uninstall ALL Microsoft Office Apps (Hub, Teams, Web Apps)'"
-echo.
+powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Uninstall ALL Microsoft Office Apps (Hub, Teams, Web Apps)'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [2] Uninstall Xbox Game Bar & Apps'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [3] Uninstall Microsoft Photos'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [4] Uninstall Windows Camera'"
@@ -91,7 +90,7 @@ echo.
 powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
 choice /N /C 1234567890 /M "Select an app to uninstall: "
-if errorlevel 10 goto MAIN_MENU
+if errorlevel 0 goto MAIN_MENU
 if errorlevel 9 goto UNINSTALL_HELP
 if errorlevel 8 goto UNINSTALL_ALARMS
 if errorlevel 7 goto UNINSTALL_PEOPLE
@@ -184,10 +183,10 @@ powershell -Command "Write-Host -ForegroundColor White  ' https://github.com/ath
 echo.
 powershell -Command "Write-Host -ForegroundColor Yellow '-----------------------------------------------------------------'"
 echo.
-powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Open Main Site    [2] Open GitHub    [3] Back to Main Menu'"
+powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Open Main Site    [2] Open GitHub    [0] Back to Main Menu'"
 echo.
 choice /N /C 123 /M "Select an option: "
-if errorlevel 3 goto MAIN_MENU
+if errorlevel 0 goto MAIN_MENU
 if errorlevel 2 goto LAUNCH_GITHUB
 if errorlevel 1 goto LAUNCH_SITE
 goto DEVELOPER_INFO
@@ -197,10 +196,10 @@ powershell -Command "Write-Host -ForegroundColor Yellow '=======================
 echo.
 powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Disable Copilot (Windows & Edge)'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [2] Enable Copilot (Revert to Default)'"
-powershell -Command "Write-Host -ForegroundColor Cyan ' [3] Back to Main Menu'"
+powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
 choice /N /C 123 /M "Select an option: "
-if errorlevel 3 goto MAIN_MENU
+if errorlevel 0 goto MAIN_MENU
 if errorlevel 2 goto ENABLE_COPILOT
 if errorlevel 1 goto DISABLE_COPILOT
 goto COPILOT_MENU
@@ -219,10 +218,10 @@ echo.
 powershell -Command "Write-Host -ForegroundColor Yellow ' [6] --- DISABLE ALL OF THE ABOVE ---'"
 powershell -Command "Write-Host -ForegroundColor Yellow ' [7] --- ENABLE ALL OF THE ABOVE ---'"
 echo.
-powershell -Command "Write-Host -ForegroundColor Cyan ' [8] Back to Main Menu'"
+powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
 choice /N /C 12345678 /M "Select an option: "
-if errorlevel 8 goto MAIN_MENU
+if errorlevel 0 goto MAIN_MENU
 if errorlevel 7 goto ENABLE_ALL
 if errorlevel 6 goto DISABLE_ALL
 if errorlevel 5 goto PRIVACY_MENU
@@ -240,10 +239,10 @@ echo  pre-loading on startup, and creating desktop shortcuts.
 echo.
 powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Neuter Edge (Apply all disabling policies)'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [2] Revert Edge Settings to Default'"
-powershell -Command "Write-Host -ForegroundColor Cyan ' [3] Back to Main Menu'"
+powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
 choice /N /C 123 /M "Select an option: "
-if errorlevel 3 goto MAIN_MENU
+if errorlevel 0 goto MAIN_MENU
 if errorlevel 2 goto ENABLE_EDGE
 if errorlevel 1 goto DISABLE_EDGE
 goto EDGE_MENU
@@ -374,7 +373,7 @@ echo    [HKLM\%REG_KEY_CORTANA%\%REG_VAL_CORTANA%] = 0
 echo    [HKCU\%REG_KEY_ADS%\%REG_VAL_ADS%] = 0
 echo    [HKLM\%REG_KEY_TELEMETRY%\%REG_VAL_TELEMETRY%] = 0
 echo.
-pause
+paus0
 goto MAIN_MENU
 :EOF
 endlocal

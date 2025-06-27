@@ -3,11 +3,12 @@ setlocal
 color 0F
 
 :: =================================================================
-::  just_use_linux_bruh.bat v1.0 (Public Release)
+::  just_use_linux_bruh.bat v1.1 (Tweaked Cortana & Widget)
 :: =================================================================
 
+
 set "SCRIPT_NAME=just_use_linux_bruh"
-set "VERSION=1.0"
+set "VERSION=7.0"
 
 set "REG_KEY_WIN_COpilot=HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"
 set "REG_KEY_EDGE_COpilot=HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge"
@@ -135,18 +136,21 @@ if errorlevel 8 goto MAIN_MENU
 if errorlevel 7 goto ENABLE_ALL
 if errorlevel 6 goto DISABLE_ALL
 if errorlevel 5 goto PRIVACY_MENU
-if errorlevel 4 goto WIDGETS_CORTANA_MENU
-if errorlevel 3 goto ONEDRIVE_MENU
-if errorlevel 2 goto CONSUMER_MENU
-if errorlevel 1 goto COPILOT_MENU
+if errorlevel 4 goto CORTANA_MENU
+if errorlevel 3 goto WIDGETS_MENU
+if errorlevel 2 goto ONEDRIVE_MENU
+if errorlevel 1 goto CONSUMER_MENU
 goto DEBLOAT_MENU
 
 :PRIVACY_MENU
 cls & echo [1] Disable Ads/Telemetry  [2] Enable Ads/Telemetry  [3] Back & choice /N /C 123
 if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_PRIVACY & if errorlevel 1 goto DISABLE_PRIVACY
-:WIDGETS_CORTANA_MENU
-cls & echo [1] Disable Widgets/Cortana  [2] Enable Widgets/Cortana  [3] Back & choice /N /C 123
-if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_WIDGETS_CORTANA & if errorlevel 1 goto DISABLE_WIDGETS_CORTANA
+:CORTANA_MENU
+cls & echo [1] Disable Cortana  [2] Enable Cortana  [3] Back & choice /N /C 123
+if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_CORTANA & if errorlevel 1 goto DISABLE_CORTANA
+:WIDGETS_MENU
+cls & echo [1] Disable Widgets  [2] Enable Widgets  [3] Back & choice /N /C 123
+if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_WIDGETS & if errorlevel 1 goto DISABLE_WIDGETS
 :ONEDRIVE_MENU
 cls & echo [1] Disable OneDrive  [2] Enable OneDrive  [3] Back & choice /N /C 123
 if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_ONEDRIVE & if errorlevel 1 goto DISABLE_ONEDRIVE
@@ -186,13 +190,13 @@ goto:eof
 call :ACTION_HEADER & call :CHECK_ADMIN
 echo    -> Enforcing DISABLED state for ALL features...
 timeout /t 1 >nul
-call :DISABLE_COPILOT_LOGIC & call :DISABLE_CONSUMER_LOGIC & call :DISABLE_ONEDRIVE_LOGIC & call :DISABLE_WIDGETS_CORTANA_LOGIC & call :DISABLE_PRIVACY_LOGIC
+call :DISABLE_COPILOT_LOGIC & call :DISABLE_CONSUMER_LOGIC & call :DISABLE_ONEDRIVE_LOGIC & call :DISABLE_WIDGETS_LOGIC & call :DISABLE_CORTANA_LOGIC & call :DISABLE_PRIVACY_LOGIC
 call :ACTION_FOOTER & goto DEBLOAT_MENU
 :ENABLE_ALL
 call :ACTION_HEADER & call :CHECK_ADMIN
 echo    -> Reverting ALL features to Windows Default...
 timeout /t 1 >nul
-call :ENABLE_COPILOT_LOGIC & call :ENABLE_CONSUMER_LOGIC & call :ENABLE_ONEDRIVE_LOGIC & call :ENABLE_WIDGETS_CORTANA_LOGIC & call :ENABLE_PRIVACY_LOGIC
+call :ENABLE_COPILOT_LOGIC & call :ENABLE_CONSUMER_LOGIC & call :ENABLE_ONEDRIVE_LOGIC & call :ENABLE_WIDGETS_LOGIC & call :ENABLE_CORTANA_LOGIC & call :ENABLE_PRIVACY_LOGIC
 call :ACTION_FOOTER & goto DEBLOAT_MENU
 
 :DISABLE_COPILOT
@@ -207,10 +211,14 @@ call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Enabling Suggested Apps... 
 call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Disabling OneDrive... & timeout /t 1 >nul & call :DISABLE_ONEDRIVE_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
 :ENABLE_ONEDRIVE
 call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Enabling OneDrive... & timeout /t 1 >nul & call :ENABLE_ONEDRIVE_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
-:DISABLE_WIDGETS_CORTANA
-call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Disabling Widgets and Cortana... & timeout /t 1 >nul & call :DISABLE_WIDGETS_CORTANA_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
-:ENABLE_WIDGETS_CORTANA
-call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Enabling Widgets and Cortana... & timeout /t 1 >nul & call :ENABLE_WIDGETS_CORTANA_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
+:DISABLE_WIDGETS
+call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Disabling Widgets... & timeout /t 1 >nul & call :DISABLE_WIDGETS_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
+:ENABLE_WIDGETS
+call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Enabling Widgets... & timeout /t 1 >nul & call :ENABLE_WIDGETS_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
+:DISABLE_CORTANA
+call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Disabling Cortana... & timeout /t 1 >nul & call :DISABLE_CORTANA_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
+:ENABLE_CORTANA
+call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Enabling Cortana... & timeout /t 1 >nul & call :ENABLE_CORTANA_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
 :DISABLE_PRIVACY
 call :ACTION_HEADER & call :CHECK_ADMIN & echo    -> Disabling Ads and Telemetry... & timeout /t 1 >nul & call :DISABLE_PRIVACY_LOGIC & call :ACTION_FOOTER & goto DEBLOAT_MENU
 :ENABLE_PRIVACY
@@ -228,10 +236,14 @@ reg delete "%REG_KEY_CONSUMER%" /v "%REG_VAL_CONSUMER%" /f >nul 2>&1 & goto:eof
 reg add "%REG_KEY_ONEDRIVE%" /v "%REG_VAL_ONEDRIVE%" /t REG_DWORD /d 1 /f >nul & goto:eof
 :ENABLE_ONEDRIVE_LOGIC
 reg delete "%REG_KEY_ONEDRIVE%" /v "%REG_VAL_ONEDRIVE%" /f >nul 2>&1 & goto:eof
-:DISABLE_WIDGETS_CORTANA_LOGIC
-reg add "%REG_KEY_WIDGETS%" /v "%REG_VAL_WIDGETS%" /t REG_DWORD /d 0 /f >nul & reg add "%REG_KEY_CORTANA%" /v "%REG_VAL_CORTANA%" /t REG_DWORD /d 0 /f >nul & goto:eof
-:ENABLE_WIDGETS_CORTANA_LOGIC
-reg delete "%REG_KEY_WIDGETS%" /v "%REG_VAL_WIDGETS%" /f >nul 2>&1 & reg delete "%REG_KEY_CORTANA%" /v "%REG_VAL_CORTANA%" /f >nul 2>&1 & goto:eof
+:DISABLE_WIDGETS_LOGIC
+reg add "%REG_KEY_WIDGETS%" /v "%REG_VAL_WIDGETS%" /t REG_DWORD /d 0 /f >nul & goto:eof
+:ENABLE_WIDGETS_LOGIC
+reg delete "%REG_KEY_WIDGETS%" /v "%REG_VAL_WIDGETS%" /f >nul 2>&1 & goto:eof
+:DISABLE_CORTANA_LOGIC
+reg add "%REG_KEY_CORTANA%" /v "%REG_VAL_CORTANA%" /t REG_DWORD /d 0 /f >nul & goto:eof
+:ENABLE_CORTANA_LOGIC
+reg delete "%REG_KEY_CORTANA%" /v "%REG_VAL_CORTANA%" /f >nul 2>&1 & goto:eof
 :DISABLE_PRIVACY_LOGIC
 reg add "%REG_KEY_ADS%" /v "%REG_VAL_ADS%" /t REG_DWORD /d 0 /f >nul & reg add "%REG_KEY_TELEMETRY%" /v "%REG_VAL_TELEMETRY%" /t REG_DWORD /d 0 /f >nul & goto:eof
 :ENABLE_PRIVACY_LOGIC

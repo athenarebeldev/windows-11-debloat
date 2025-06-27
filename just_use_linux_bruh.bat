@@ -3,11 +3,11 @@ setlocal
 color 0F
 
 :: =================================================================
-::  just_use_linux_bruh.bat v2 (The Big beautiful Debloat)
+::  just_use_linux_bruh.bat v2.1 (Consistent Menu)
 :: =================================================================
 
 set "SCRIPT_NAME=just_use_linux_bruh"
-set "VERSION=2.0"
+set "VERSION=2.1"
 
 set "REG_KEY_WIN_COpilot=HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"
 set "REG_KEY_EDGE_COpilot=HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge"
@@ -29,7 +29,7 @@ set "REG_VAL_ADS=Enabled"
 set "REG_VAL_TELEMETRY=AllowTelemetry"
 set "REG_VAL_EDGE_NOUPDATE=DoNotUpdateToEdgeWithChromium"
 set "REG_VAL_EDGE_NOSHORTCUT=CreateDesktopShortcutDefault"
-set "REG_VAL_EDGE_NOPRELOAD=AllowPrelau0ch"
+set "REG_VAL_EDGE_NOPRELOAD=AllowPrelaunch"
 
 :MAIN_MENU
 cls
@@ -68,7 +68,7 @@ if errorlevel 5 goto LIST_KEYS
 if errorlevel 4 goto APP_MENU
 if errorlevel 3 goto EDGE_MENU
 if errorlevel 2 goto DEBLOAT_MENU
-if errorlevel 1 goto COPILOT_MEN0
+if errorlevel 1 goto COPILOT_MENU
 goto MAIN_MENU
 
 :APP_MENU
@@ -77,7 +77,8 @@ powershell -Command "Write-Host -ForegroundColor Yellow '=======================
 powershell -Command "Write-Host -ForegroundColor Red   ' WARNING: UNINSTALLING APPS IS PERMANENT AND RISKY. PROCEED WITH CAUTION.'"
 powershell -Command "Write-Host -ForegroundColor Yellow '================================================================='"
 echo.
-powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Uninstall ALL Microsoft Office Apps (Hub, Teams, Web Apps)'"
+powershell -Command "Write-Host -ForegroundColor Yellow ' [1] Uninstall ALL Microsoft Office Apps (Hub, Teams, Web Apps)'"
+echo.
 powershell -Command "Write-Host -ForegroundColor Cyan ' [2] Uninstall Xbox Game Bar & Apps'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [3] Uninstall Microsoft Photos'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [4] Uninstall Windows Camera'"
@@ -90,7 +91,7 @@ echo.
 powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
 choice /N /C 1234567890 /M "Select an app to uninstall: "
-if errorlevel 0 goto MAIN_MENU
+if errorlevel 10 goto MAIN_MENU
 if errorlevel 9 goto UNINSTALL_HELP
 if errorlevel 8 goto UNINSTALL_ALARMS
 if errorlevel 7 goto UNINSTALL_PEOPLE
@@ -102,6 +103,7 @@ if errorlevel 2 goto UNINSTALL_XBOX
 if errorlevel 1 goto UNINSTALL_OFFICE
 goto APP_MENU
 
+:: ===== APP UNINSTALLER ACTIONS =====
 :UNINSTALL_OFFICE
 call :ACTION_HEADER & call :CHECK_ADMIN
 echo    -> Uninstalling all Microsoft Office related apps...
@@ -185,8 +187,8 @@ powershell -Command "Write-Host -ForegroundColor Yellow '-----------------------
 echo.
 powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Open Main Site    [2] Open GitHub    [0] Back to Main Menu'"
 echo.
-choice /N /C 123 /M "Select an option: "
-if errorlevel 0 goto MAIN_MENU
+choice /N /C 120 /M "Select an option: "
+if errorlevel 3 goto MAIN_MENU
 if errorlevel 2 goto LAUNCH_GITHUB
 if errorlevel 1 goto LAUNCH_SITE
 goto DEVELOPER_INFO
@@ -198,8 +200,8 @@ powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Disable Copilot (Win
 powershell -Command "Write-Host -ForegroundColor Cyan ' [2] Enable Copilot (Revert to Default)'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
-choice /N /C 123 /M "Select an option: "
-if errorlevel 0 goto MAIN_MENU
+choice /N /C 120 /M "Select an option: "
+if errorlevel 3 goto MAIN_MENU
 if errorlevel 2 goto ENABLE_COPILOT
 if errorlevel 1 goto DISABLE_COPILOT
 goto COPILOT_MENU
@@ -220,8 +222,8 @@ powershell -Command "Write-Host -ForegroundColor Yellow ' [7] --- ENABLE ALL OF 
 echo.
 powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
-choice /N /C 12345678 /M "Select an option: "
-if errorlevel 0 goto MAIN_MENU
+choice /N /C 12345670 /M "Select an option: "
+if errorlevel 8 goto MAIN_MENU
 if errorlevel 7 goto ENABLE_ALL
 if errorlevel 6 goto DISABLE_ALL
 if errorlevel 5 goto PRIVACY_MENU
@@ -241,25 +243,25 @@ powershell -Command "Write-Host -ForegroundColor Cyan ' [1] Neuter Edge (Apply a
 powershell -Command "Write-Host -ForegroundColor Cyan ' [2] Revert Edge Settings to Default'"
 powershell -Command "Write-Host -ForegroundColor Cyan ' [0] Back to Main Menu'"
 echo.
-choice /N /C 123 /M "Select an option: "
-if errorlevel 0 goto MAIN_MENU
+choice /N /C 120 /M "Select an option: "
+if errorlevel 3 goto MAIN_MENU
 if errorlevel 2 goto ENABLE_EDGE
 if errorlevel 1 goto DISABLE_EDGE
 goto EDGE_MENU
 :PRIVACY_MENU
-cls & echo [1] Disable Ads/Telemetry  [2] Enable Ads/Telemetry  [3] Back & choice /N /C 123
+cls & echo [1] Disable Ads/Telemetry  [2] Enable Ads/Telemetry  [0] Back & choice /N /C 120
 if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_PRIVACY & if errorlevel 1 goto DISABLE_PRIVACY
 :CORTANA_MENU
-cls & echo [1] Disable Cortana  [2] Enable Cortana  [3] Back & choice /N /C 123
+cls & echo [1] Disable Cortana  [2] Enable Cortana  [0] Back & choice /N /C 120
 if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_CORTANA & if errorlevel 1 goto DISABLE_CORTANA
 :WIDGETS_MENU
-cls & echo [1] Disable Widgets  [2] Enable Widgets  [3] Back & choice /N /C 123
+cls & echo [1] Disable Widgets  [2] Enable Widgets  [0] Back & choice /N /C 120
 if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_WIDGETS & if errorlevel 1 goto DISABLE_WIDGETS
 :ONEDRIVE_MENU
-cls & echo [1] Disable OneDrive  [2] Enable OneDrive  [3] Back & choice /N /C 123
+cls & echo [1] Disable OneDrive  [2] Enable OneDrive  [0] Back & choice /N /C 120
 if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_ONEDRIVE & if errorlevel 1 goto DISABLE_ONEDRIVE
 :CONSUMER_MENU
-cls & echo [1] Disable Consumer Features  [2] Enable Consumer Features  [3] Back & choice /N /C 123
+cls & echo [1] Disable Consumer Features  [2] Enable Consumer Features  [0] Back & choice /N /C 120
 if errorlevel 3 goto DEBLOAT_MENU & if errorlevel 2 goto ENABLE_CONSUMER & if errorlevel 1 goto DISABLE_CONSUMER
 :LAUNCH_SITE
 start https://atxyz.dev
@@ -373,7 +375,7 @@ echo    [HKLM\%REG_KEY_CORTANA%\%REG_VAL_CORTANA%] = 0
 echo    [HKCU\%REG_KEY_ADS%\%REG_VAL_ADS%] = 0
 echo    [HKLM\%REG_KEY_TELEMETRY%\%REG_VAL_TELEMETRY%] = 0
 echo.
-paus0
+pause
 goto MAIN_MENU
 :EOF
 endlocal

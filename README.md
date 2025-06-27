@@ -37,6 +37,13 @@ Save the `just_use_linux_bruh.bat` file somewhere you can find it, like your Des
 
 Time to kill co-pilot... I mean edit the registry to disable these programs. 
 
+**0. Grab the Goods (How to Download from GitHub)**
+
+1.  On the main GitHub page for the project, look for a green button that says **"<> Code"**. Click it.
+2.  A dropdown menu will appear. Click on **"Download ZIP"**.
+3.  Save the ZIP file to your computer.
+4.  Find the downloaded ZIP file and **right-click** on it, then select **"Extract All..."**. This will create a folder with the script inside.
+
 **1. Awaken its Ancient Powers (Run as Admin)**
 This is the most crucial step. Don't just double-click it like a normal person.
 * **Right-click** on the `just_use_linux_bruh.bat` file.
@@ -51,9 +58,17 @@ This is the most crucial step. Don't just double-click it like a normal person.
 
 ### **► Troubleshooting: Houston, We Have a Problem?**
 
+* **Problem:** "Windows protected your PC" popped up with a big blue screen!
+    * **Cause:** This is Windows Defender's "SmartScreen" filter. It does this for almost any script downloaded from the internet that isn't from a huge corporation. It **does not** mean the file is a virus.
+    * **Solution:**
+        1.  On the blue screen, do **not** click "Don't run".
+        2.  Click the underlined text that says **`More info`**.
+        3.  The window will change, and a new button will appear at the bottom. Click **`Run anyway`**.
+        4.  You will only have to do this once.
+
 * **Problem:** "I ran it and the window vanished faster than my motivation on a Monday!"
     * **Cause:** Your antivirus thought our script was having too much fun and shut the party down. It saw a script trying to change system settings and, to be fair, got a little suspicious.
-    * **Solution:** You need to tell your security software to chill out. In Windows Defender, you can add an "Exclusion" for our script, basically telling it, "This one's with me." Check the security software's settings for "Exclusions" or "Exceptions."
+    * **Solution:** You need to tell your security software to chill out. In Windows Defender, you can add an "Exclusion" for our script, basically telling it, "This one's with me." Check your security software's settings for "Exclusions" or "Exceptions."
 
 * **Problem:** "I disabled something, but it's still there, mocking me."
     * **Cause:** Windows is stubborn. Some parts of it only check for settings when it first wakes up.
@@ -75,3 +90,12 @@ This is the most crucial step. Don't just double-click it like a normal person.
 
 * **About the Developer:**
     * [Come meet me on my Discord!](https://discord.gg/JtQ2QTfjXt)
+  
+
+ █████╗ ████████╗██╗  ██╗██╗   ██╗███████╗
+██╔══██╗╚══██╔══╝╚██╗██╔╝╚██╗ ██╔╝╚══███╔╝
+███████║   ██║    ╚███╔╝  ╚████╔╝   ███╔╝ 
+██╔══██║   ██║    ██╔██╗   ╚██╔╝   ███╔╝  
+██║  ██║   ██║   ██╔╝ ██╗   ██║   ███████╗
+╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+Made with 💙 by: [AthenaRebel](https://atxyz.dev/)
